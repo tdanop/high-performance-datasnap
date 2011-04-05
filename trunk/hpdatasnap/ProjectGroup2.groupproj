@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{71DCC946-97E4-400D-87E4-D5BD961ABE3F}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="Server\HPDServer.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="Client\HPDClient.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="HPDServer">
+			<MSBuild Projects="Server\HPDServer.dproj"/>
+		</Target>
+		<Target Name="HPDServer:Clean">
+			<MSBuild Projects="Server\HPDServer.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="HPDServer:Make">
+			<MSBuild Projects="Server\HPDServer.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="HPDClient">
+			<MSBuild Projects="Client\HPDClient.dproj"/>
+		</Target>
+		<Target Name="HPDClient:Clean">
+			<MSBuild Projects="Client\HPDClient.dproj" Targets="Clean"/>
+		</Target>
+		<Target Name="HPDClient:Make">
+			<MSBuild Projects="Client\HPDClient.dproj" Targets="Make"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="HPDServer;HPDClient"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="HPDServer:Clean;HPDClient:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="HPDServer:Make;HPDClient:Make"/>
+		</Target>
+		<Import Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')" Project="$(BDS)\Bin\CodeGear.Group.Targets"/>
+	</Project>
