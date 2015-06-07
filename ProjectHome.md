@@ -1,0 +1,1 @@
+Using Delphi XE and MS SQL Server an example of how to implement high performance DataSnap servers and Clients.
